@@ -60,7 +60,6 @@
 		68060FB523FFCA3300217881 /* PitchPerfect */ = {
 			isa = PBXGroup;
 			children = (
-				687F819D2400136C006A90A5 /* PlaySoundsViewControllerAudioExt.swift */,
 				68060FB623FFCA3300217881 /* AppDelegate.swift */,
 				68060FB823FFCA3300217881 /* SceneDelegate.swift */,
 				68060FBA23FFCA3300217881 /* RecordSoundsViewController.swift */,
@@ -69,6 +68,7 @@
 				68060FC123FFCA3400217881 /* LaunchScreen.storyboard */,
 				68060FC423FFCA3400217881 /* Info.plist */,
 				68060FCA23FFFFA600217881 /* PlaySoundsViewController.swift */,
+				687F819D2400136C006A90A5 /* PlaySoundsViewControllerAudioExt.swift */,
 			);
 			path = PitchPerfect;
 			sourceTree = "<group>";
