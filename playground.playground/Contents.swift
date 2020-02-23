@@ -52,11 +52,11 @@ func remove(input: String, first: Int, last: Int) -> String {
     return newString
 }
 
-func removeElements(array: [Int], n: Int) -> [Int] {
+func removeElements(array: [Int], numberOfElements: Int) -> [Int] {
     // You may need to modify newArray
     var newArray = array
     
-    for _ in 0..<n {
+    for _ in 0..<numberOfElements {
         newArray.removeFirst()
     }
     return newArray
