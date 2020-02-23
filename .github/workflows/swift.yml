@@ -1,15 +1,21 @@
-name: Swift
+name: SwiftBuild
 
-on: [push]
+on:
+  pull_request:
+    paths:
+      - '**/*.swift'
 
 jobs:
   build:
-
-    runs-on: macOS-latest
-
+    name: Build-PitchPerfect
+    runs-on: macos
+    strategy:
+            matrix:
+              destination: ['platform=iOS Simulator,OS=13.2,name=iPhone X']
     steps:
-    - uses: actions/checkout@v2
-    - name: Build
-      run: swift build -v
-    - name: Run tests
-      run: swift test -v
+      - name: Checkout
+        uses: actions/checkout@master
+      - name: Build
+        run: xcodebuild clean build -project PitchPerfect/PitchPerfect.xcodeproj -scheme Pitchperfect -destination "${destination}" CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO ONLY_ACTIVE_ARCH=NO
+        env: 
+         destination: ${{ matrix.destination }}
