@@ -55,7 +55,11 @@ class RecordSoundsViewController: UIViewController, AVAudioRecorderDelegate {
         
         audioRecorder.stop()
         let session = AVAudioSession.sharedInstance()
-        try! session.setActive(false)
+        do {
+            try session.setActive(false)
+        } catch {
+            print(error)
+        }
     }
     
     func toggleUIState(recordingActive: Bool) {
