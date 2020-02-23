@@ -30,9 +30,20 @@ class RecordSoundsViewController: UIViewController, AVAudioRecorderDelegate {
         let filePath = URL(string: pathArray.joined(separator: "/"))
 
         let session = AVAudioSession.sharedInstance()
-        try! session.setCategory(AVAudioSession.Category.playAndRecord, mode: AVAudioSession.Mode.default, options: AVAudioSession.CategoryOptions.defaultToSpeaker)
+        do {
+            try session.setCategory(AVAudioSession.Category.playAndRecord, mode: AVAudioSession.Mode.default, options: AVAudioSession.CategoryOptions.defaultToSpeaker)
+        } catch {
+            print(error)
+            toggleUIState(recordingActive: false)
+        }
 
-        try! audioRecorder = AVAudioRecorder(url: filePath!, settings: [:])
+        do {
+            try audioRecorder = AVAudioRecorder(url: filePath!, settings: [:])
+        } catch {
+            print(error)
+            toggleUIState(recordingActive: false)
+        }
+        
         audioRecorder.delegate = self
         audioRecorder.isMeteringEnabled = true
         audioRecorder.prepareToRecord()
@@ -68,8 +79,14 @@ class RecordSoundsViewController: UIViewController, AVAudioRecorderDelegate {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "stopRecording" {
-            let playSoundsVC = segue.destination as! PlaySoundsViewController
-            let recordedAudioUrl = sender as! URL
+            guard let playSoundsVC = segue.destination as? PlaySoundsViewController else {
+                print("Segue destination was not of type PlaySoundsViewController")
+                return
+            }
+            guard let recordedAudioUrl = sender as? URL else {
+                print("sender was not of type URL")
+                return
+            }
             playSoundsVC.recordedAudioUrl = recordedAudioUrl
         }
     }
