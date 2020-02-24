@@ -16,14 +16,22 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1tw-wv-yPW">
-                                <rect key="frame" x="129.5" y="397.5" width="155" height="155"/>
+                                <rect key="frame" x="143" y="326.5" width="128" height="128"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="128" id="8BX-7s-N1i">
+                                        <variation key="heightClass=compact-widthClass=compact" constant="64"/>
+                                    </constraint>
+                                    <constraint firstAttribute="height" constant="128" id="Aql-Ks-zit">
+                                        <variation key="heightClass=compact-widthClass=compact" constant="64"/>
+                                    </constraint>
+                                </constraints>
                                 <state key="normal" image="RecordButton"/>
                                 <connections>
                                     <action selector="recordAudio:" destination="BYZ-38-t0r" eventType="touchUpInside" id="LSY-U4-pOK"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jgS-vl-2Ez">
-                                <rect key="frame" x="175" y="621.5" width="64" height="64"/>
+                                <rect key="frame" x="175" y="505.5" width="64" height="64"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="64" id="Bpd-l1-26D"/>
                                     <constraint firstAttribute="height" constant="64" id="oJK-hl-sxU"/>
@@ -34,7 +42,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tap to record" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zm6-f8-yd4">
-                                <rect key="frame" x="156" y="576.5" width="102" height="21"/>
+                                <rect key="frame" x="156" y="464.5" width="102" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -42,12 +50,12 @@
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="zm6-f8-yd4" firstAttribute="top" secondItem="1tw-wv-yPW" secondAttribute="bottom" constant="24" id="1ar-Dy-YHU"/>
-                            <constraint firstItem="1tw-wv-yPW" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="3f1-A0-VGG"/>
-                            <constraint firstItem="zm6-f8-yd4" firstAttribute="centerX" secondItem="1tw-wv-yPW" secondAttribute="centerX" id="7b1-zk-BXK"/>
-                            <constraint firstItem="1tw-wv-yPW" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="CpI-06-9Dc"/>
-                            <constraint firstItem="jgS-vl-2Ez" firstAttribute="centerX" secondItem="zm6-f8-yd4" secondAttribute="centerX" id="UH3-ab-tDG"/>
-                            <constraint firstItem="jgS-vl-2Ez" firstAttribute="top" secondItem="zm6-f8-yd4" secondAttribute="bottom" constant="24" id="v97-RP-x81"/>
+                            <constraint firstItem="zm6-f8-yd4" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="0T1-vi-4bh"/>
+                            <constraint firstItem="jgS-vl-2Ez" firstAttribute="centerX" secondItem="zm6-f8-yd4" secondAttribute="centerX" id="O7s-XL-5Sp"/>
+                            <constraint firstItem="zm6-f8-yd4" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="Vlk-9n-GdX"/>
+                            <constraint firstItem="jgS-vl-2Ez" firstAttribute="top" secondItem="zm6-f8-yd4" secondAttribute="bottom" constant="20" id="jJU-7A-VgY"/>
+                            <constraint firstItem="zm6-f8-yd4" firstAttribute="top" secondItem="1tw-wv-yPW" secondAttribute="bottom" constant="10" id="qGk-wa-BLv"/>
+                            <constraint firstItem="1tw-wv-yPW" firstAttribute="centerX" secondItem="zm6-f8-yd4" secondAttribute="centerX" id="rv0-d4-aiK"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
