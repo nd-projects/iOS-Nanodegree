@@ -17,9 +17,9 @@ class CurrencyDelegate :  NSObject, UITextFieldDelegate {
         
         let digits = CharacterSet.decimalDigits
         var digitText = ""
-        for c in (newTextString.unicodeScalars) {
-            if digits.contains(UnicodeScalar(c.value)!) {
-                digitText.append("\(c)")
+        for character in (newTextString.unicodeScalars) {
+            if digits.contains(UnicodeScalar(character.value)!) {
+                digitText.append("\(character)")
             }
         }
         
