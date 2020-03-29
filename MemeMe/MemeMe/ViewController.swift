@@ -24,13 +24,6 @@ class ViewController: UIViewController {
     var defaultTextTop: String = "TOP"
     var defaultTextBottom: String = "BOTTOM"
 
-    let memeTextAttributes: [NSAttributedString.Key: Any] = [
-        NSAttributedString.Key.strokeColor: UIColor.black,
-        NSAttributedString.Key.foregroundColor: UIColor.white,
-        NSAttributedString.Key.font: UIFont(name: "HelveticaNeue-CondensedBlack", size: 40)!,
-        NSAttributedString.Key.strokeWidth: -3.0
-    ]
-
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         subscribeToKeyboardNotifiactions()
@@ -51,8 +44,8 @@ class ViewController: UIViewController {
 
         cameraButton.isEnabled = UIImagePickerController.isSourceTypeAvailable(.camera)
 
-        initializeTextField(topTextField, defaultTextTop, self.memeTextAttributes)
-        initializeTextField(bottomTextField, defaultTextBottom, self.memeTextAttributes)
+        initializeTextField(topTextField, defaultTextTop)
+        initializeTextField(bottomTextField, defaultTextBottom)
     }
 
     @objc func keyboardWillShow(_ notification: Notification) {
@@ -86,10 +79,15 @@ class ViewController: UIViewController {
     }
 
     // MARK: - Private functions
-    private func initializeTextField(_ textField: UITextField,
-                                     _ text: String,
-                                     _ textAttributes: [NSAttributedString.Key: Any]) {
-        textField.defaultTextAttributes = textAttributes
+    private func initializeTextField(_ textField: UITextField, _ text: String) {
+        let memeTextAttributes: [NSAttributedString.Key: Any] = [
+            NSAttributedString.Key.strokeColor: UIColor.black,
+            NSAttributedString.Key.foregroundColor: UIColor.white,
+            NSAttributedString.Key.font: UIFont(name: "HelveticaNeue-CondensedBlack", size: 40)!,
+            NSAttributedString.Key.strokeWidth: -3.0
+        ]
+
+        textField.defaultTextAttributes = memeTextAttributes
         textField.text = text
         textField.autocapitalizationType = .allCharacters
         textField.textAlignment = .center
