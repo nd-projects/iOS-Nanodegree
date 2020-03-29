@@ -2,10 +2,12 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>NSPhotoLibraryAddUsageDescription</key>
+	<string>Save meme to Photo Library</string>
 	<key>NSPhotoLibraryUsageDescription</key>
-	<string></string>
+	<string>Use photo from Photo Libaray as image for MemeMe</string>
 	<key>NSCameraUsageDescription</key>
-	<string></string>
+	<string>Take a photo to use as image for MemeMe</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleExecutable</key>

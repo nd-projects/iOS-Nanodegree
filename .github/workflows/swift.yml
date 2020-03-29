@@ -7,7 +7,7 @@ on:
 
 jobs:
   build:
-    name: Build-PitchPerfect
+    name: Build
     runs-on: macos
     strategy:
             matrix:
@@ -15,7 +15,11 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@master
-      - name: Build
+      - name: Build PitchPerfect
         run: xcodebuild clean build -project PitchPerfect/PitchPerfect.xcodeproj -scheme PitchPerfect -destination "${destination}" CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO ONLY_ACTIVE_ARCH=NO
+        env: 
+         destination: ${{ matrix.destination }}
+      - name: Build MemeMe
+        run: xcodebuild clean build -project MemeMe/MemeMe.xcodeproj -scheme MemeMe -destination "${destination}" CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO ONLY_ACTIVE_ARCH=NO
         env: 
          destination: ${{ matrix.destination }}
