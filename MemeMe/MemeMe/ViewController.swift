@@ -77,11 +77,24 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
                 textField.text = ""
             }
         default:
-            return
+            break
         }
     }
 
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        switch textField {
+        case topTextField:
+            if textField.text == "" {
+                textField.text = defaultTextTop
+            }
+        case bottomTextField:
+            if textField.text == "" {
+                textField.text = defaultTextBottom
+            }
+        default:
+            break
+        }
+
         textField.resignFirstResponder()
 
         return true
@@ -139,7 +152,6 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     func getKeyboardHeight(_ notification: Notification) -> CGFloat {
         let userInfo = notification.userInfo
         guard let keyboardSize = userInfo![UIResponder.keyboardFrameEndUserInfoKey] as? NSValue else {
-            print("Could not access keyboard height")
             return 0
         }
         return keyboardSize.cgRectValue.height
