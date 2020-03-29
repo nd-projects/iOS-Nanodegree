@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="MemeMe" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="b38-la-b5h">
+                                <rect key="frame" x="0.0" y="813" width="414" height="49"/>
+                                <items>
+                                    <barButtonItem title="Pick" id="Eib-j3-82q">
+                                        <connections>
+                                            <action selector="pickAnImage:" destination="BYZ-38-t0r" id="S32-9y-rtj"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem title="Camera" id="aiu-da-HBb">
+                                        <connections>
+                                            <action selector="takePhoto:" destination="BYZ-38-t0r" id="zBP-Kj-lPX"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </items>
+                            </toolbar>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="TOP TEXT" textAlignment="center" adjustsFontSizeToFit="NO" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="0Ef-Rd-2Y7">
+                                <rect key="frame" x="20" y="80" width="374" height="29"/>
+                                <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="24"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="BOTTOM TEXT" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="YbB-XV-9o6">
+                                <rect key="frame" x="20" y="745" width="374" height="29"/>
+                                <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="24"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ymc-Rv-4Ml">
+                                <rect key="frame" x="0.0" y="44" width="414" height="769"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="ymc-Rv-4Ml" firstAttribute="bottom" secondItem="b38-la-b5h" secondAttribute="top" id="2MS-w8-2pa"/>
+                            <constraint firstItem="ymc-Rv-4Ml" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="FT0-ds-SKE"/>
+                            <constraint firstItem="b38-la-b5h" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="IMa-f7-IIH"/>
+                            <constraint firstItem="b38-la-b5h" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="Ljl-W2-d75"/>
+                            <constraint firstItem="0Ef-Rd-2Y7" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="RdR-X5-lN6"/>
+                            <constraint firstItem="b38-la-b5h" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="TX9-8D-bKT"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="0Ef-Rd-2Y7" secondAttribute="trailing" constant="20" id="eIF-2y-W7N"/>
+                            <constraint firstItem="YbB-XV-9o6" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="gIh-z1-79m"/>
+                            <constraint firstItem="b38-la-b5h" firstAttribute="top" secondItem="YbB-XV-9o6" secondAttribute="bottom" constant="39" id="hD1-wt-t7E"/>
+                            <constraint firstItem="ymc-Rv-4Ml" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="nXK-0i-zOR"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="ymc-Rv-4Ml" secondAttribute="trailing" id="nht-sf-tfj"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="YbB-XV-9o6" secondAttribute="trailing" constant="20" id="w9Q-NK-Nxk"/>
+                            <constraint firstItem="0Ef-Rd-2Y7" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="36" id="wV5-AI-JIM"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                    </view>
+                    <connections>
+                        <outlet property="bottomTextField" destination="YbB-XV-9o6" id="5VL-WC-t8K"/>
+                        <outlet property="cameraButton" destination="aiu-da-HBb" id="O5z-61-nUP"/>
+                        <outlet property="imagePickerView" destination="ymc-Rv-4Ml" id="ZeA-My-2DU"/>
+                        <outlet property="topTextField" destination="0Ef-Rd-2Y7" id="Zur-xW-iQJ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="137.68115942028987" y="137.94642857142856"/>
+        </scene>
+    </scenes>
+</document>
