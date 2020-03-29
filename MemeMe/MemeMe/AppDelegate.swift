@@ -16,7 +16,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return true
     }
 
-    // MARK: UISceneSession Lifecycle
+    // MARK: - UISceneSession Lifecycle
 
     func application(_: UIApplication,
                      configurationForConnecting connectingSceneSession: UISceneSession,
@@ -26,6 +26,5 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return UISceneConfiguration(name: "Default Configuration", sessionRole: connectingSceneSession.role)
     }
 
-    func application(_: UIApplication,
-                     didDiscardSceneSessions _: Set<UISceneSession>) {}
+    func application(_: UIApplication, didDiscardSceneSessions _: Set<UISceneSession>) {}
 }
