@@ -7,14 +7,7 @@
 
 import UIKit
 
-struct Meme {
-    var topText: String
-    var bottomText: String
-    var originalImage: UIImage
-    var memedImage: UIImage
-}
-
-class ViewController: UIViewController {
+class MemeEditorViewController: UIViewController {
     @IBOutlet var imagePickerView: UIImageView!
     @IBOutlet var cameraButton: UIBarButtonItem!
     @IBOutlet var topTextField: UITextField!
@@ -144,11 +137,18 @@ class ViewController: UIViewController {
 
     private func save() {
         UIImageWriteToSavedPhotosAlbum(self.meme.memedImage, nil, nil, nil)
+
+        let object = UIApplication.shared.delegate
+        guard let appDelegate = object as? AppDelegate else {
+            return
+        }
+        appDelegate.memes.append(self.meme)
+
     }
 }
 
 // MARK: - UIImagePickerControllerDelegate
-extension ViewController: UIImagePickerControllerDelegate {
+extension MemeEditorViewController: UIImagePickerControllerDelegate {
     @IBAction func pickAnImage(_: Any) {
         let pickerController = UIImagePickerController()
         pickerController.delegate = self
@@ -178,10 +178,10 @@ extension ViewController: UIImagePickerControllerDelegate {
 }
 
 // MARK: - UINavigationControllerDelegate
-extension ViewController: UINavigationControllerDelegate {}
+extension MemeEditorViewController: UINavigationControllerDelegate {}
 
 // MARK: - UITextFieldDelegate
-extension ViewController: UITextFieldDelegate {
+extension MemeEditorViewController: UITextFieldDelegate {
     func textFieldDidBeginEditing(_ textField: UITextField) {
         switch textField {
         case topTextField:
