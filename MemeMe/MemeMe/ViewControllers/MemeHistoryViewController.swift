@@ -9,14 +9,16 @@
 import UIKit
 
 class MemeHistoryViewController: UIViewController {
-    var memes: [Meme] = []
+    var memes: [Meme]! {
+        let object = UIApplication.shared.delegate
+        guard let appDelegate = object as? AppDelegate else {
+            return [Meme]()
+        }
+        return appDelegate.memes
+    }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        let object = UIApplication.shared.delegate
-        guard let appDelegate = object as? AppDelegate else {
-            return
-        }
-        self.memes = appDelegate.memes
+
     }
 }

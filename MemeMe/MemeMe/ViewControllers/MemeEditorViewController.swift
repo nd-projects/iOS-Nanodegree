@@ -30,10 +30,16 @@ class MemeEditorViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .action,
+        navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .action,
                                                             target: self,
                                                             action: #selector(shareMeme))
-        navigationItem.rightBarButtonItem?.isEnabled = false
+        navigationItem.leftBarButtonItem?.isEnabled = false
+
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Cancel",
+                                                            style: .plain,
+                                                            target: self,
+                                                            action: #selector(cancelMeme))
+        navigationItem.rightBarButtonItem?.isEnabled = true
 
         cameraButton.isEnabled = UIImagePickerController.isSourceTypeAvailable(.camera)
 
@@ -69,6 +75,12 @@ class MemeEditorViewController: UIViewController {
         }
 
         self.present(activityViewController, animated: true)
+    }
+
+    @objc func cancelMeme() {
+        if let navigationController = navigationController {
+            navigationController.popToRootViewController(animated: true)
+        }
     }
 
     // MARK: - Private functions
@@ -168,7 +180,7 @@ extension MemeEditorViewController: UIImagePickerControllerDelegate {
         dismiss(animated: true, completion: nil)
         if let pickedImage = info[.originalImage] as? UIImage {
             imagePickerView.image = pickedImage
-            navigationItem.rightBarButtonItem?.isEnabled = true
+            navigationItem.leftBarButtonItem?.isEnabled = true
         }
     }
 
