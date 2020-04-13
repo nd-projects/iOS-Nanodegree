@@ -62,4 +62,15 @@ class ResultsViewController: UIViewController {
     @IBAction func playAgain(_ sender: Any) {
         dismiss(animated: true, completion: nil)
     }
+
+    @IBAction func viewHistory(_ sender: Any) {
+        performSegue(withIdentifier: "history", sender: sender)
+    }
+
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "history" {
+            let vc = segue.destination as! HistoryViewController
+            vc.gameHistory.append(gameResultLabel.text ?? "ERROR")
+        }
+    }
 }
