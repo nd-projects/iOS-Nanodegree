@@ -8,17 +8,21 @@
 
 import UIKit
 
-class MemeHistoryTableViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class MemeHistoryTableViewController: UITableViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
     }
 
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 0
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 1
     }
 
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return UITableViewCell()
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "memeHistoryCell") as? MemeTableCell
+
+        cell?.memeTextLabel.text = "MEMEMME"
+
+        return cell!
     }
 }
