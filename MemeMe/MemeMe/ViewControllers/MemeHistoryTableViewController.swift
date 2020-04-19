@@ -31,18 +31,19 @@ class MemeHistoryTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        print(self.memes.count)
         return self.memes.count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "memeTableViewCell") as? MemeTableCell
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "memeTableViewCell") as? MemeTableCell else {
+            return MemeTableCell()
+        }
         let meme = self.memes[(indexPath as NSIndexPath).row]
 
-        cell?.memeTextLabel.text = meme.topText + " " + meme.bottomText
-        cell?.memeTableImageView.image = meme.memedImage
+        cell.memeTextLabel.text = meme.topText + " ... " + meme.bottomText
+        cell.memeTableImageView.image = meme.memedImage
 
-        return cell!
+        return cell
     }
 
     override func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
