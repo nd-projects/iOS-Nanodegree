@@ -78,9 +78,7 @@ class MemeEditorViewController: UIViewController {
     }
 
     @objc func cancelMeme() {
-        if let navigationController = navigationController {
-            navigationController.popToRootViewController(animated: true)
-        }
+        returnToNavigationRoot()
     }
 
     // MARK: - Private functions
@@ -124,6 +122,12 @@ class MemeEditorViewController: UIViewController {
         NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
     }
 
+    private func returnToNavigationRoot() {
+        if let navigationController = navigationController {
+            navigationController.popToRootViewController(animated: true)
+        }
+    }
+
     private func updateMeme() {
         let memedImage = generateMemedImage()
         meme = Meme(topText: topTextField.text!,
@@ -156,6 +160,7 @@ class MemeEditorViewController: UIViewController {
         }
         appDelegate.memes.append(self.meme)
 
+        returnToNavigationRoot()
     }
 }
 

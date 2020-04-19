@@ -227,9 +227,7 @@
                             <outlet property="delegate" destination="EdV-UF-owo" id="zGo-Ct-VqH"/>
                         </connections>
                     </collectionView>
-                    <navigationItem key="navigationItem" id="txc-lz-dN7">
-                        <barButtonItem key="rightBarButtonItem" title="Item" image="plus" catalog="system" id="6gO-4R-hA3" userLabel="createMemeButton"/>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="MemeMe History" id="txc-lz-dN7" userLabel="Meme History"/>
                     <connections>
                         <outlet property="flowLayout" destination="m19-FB-Bxq" id="eG5-Pt-0At"/>
                     </connections>
@@ -241,7 +239,6 @@
     </scenes>
     <resources>
         <image name="camera" catalog="system" width="64" height="48"/>
-        <image name="plus" catalog="system" width="64" height="56"/>
         <image name="rectangle.stack" catalog="system" width="64" height="60"/>
     </resources>
 </document>

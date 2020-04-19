@@ -25,6 +25,8 @@ class MemeHistoryTableViewController: UITableViewController {
                                                             target: self,
                                                             action: #selector(addMeme))
         navigationItem.rightBarButtonItem?.isEnabled = true
+
+        self.tableView.reloadData()
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -45,9 +47,12 @@ class MemeHistoryTableViewController: UITableViewController {
     }
 
     @objc func addMeme() {
-        let controller = (self.storyboard?.instantiateViewController(identifier: "MemeEditorViewController"))!
+        let controller = self.storyboard?.instantiateViewController(identifier: "MemeEditorViewController")
+        guard let memeEditorController = controller as? MemeEditorViewController else {
+            return
+        }
         if let navigationController = navigationController {
-            navigationController.pushViewController(controller, animated: true)
+            navigationController.pushViewController(memeEditorController, animated: true)
         }
     }
 }
