@@ -24,12 +24,14 @@ class MemeHistoryTableViewController: UITableViewController {
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add,
                                                             target: self,
                                                             action: #selector(addMeme))
-        navigationItem.rightBarButtonItem?.isEnabled = true
+
+        self.tabBarController?.tabBar.isHidden = false
 
         self.tableView.reloadData()
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        print(self.memes.count)
         return self.memes.count
     }
 

@@ -34,6 +34,10 @@ class MemeHistoryCollectionViewController: UICollectionViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add,
+                                                            target: self,
+                                                            action: #selector(addMeme))
+        self.tabBarController?.tabBar.isHidden = false
         self.collectionView.reloadData()
     }
 
@@ -62,5 +66,15 @@ class MemeHistoryCollectionViewController: UICollectionViewController {
 
         // Present the view controller using navigation
         //navigationController!.pushViewController(detailController, animated: true)
+    }
+
+    @objc func addMeme() {
+        let controller = self.storyboard?.instantiateViewController(identifier: "MemeEditorViewController")
+        guard let memeEditorController = controller as? MemeEditorViewController else {
+            return
+        }
+        if let navigationController = navigationController {
+            navigationController.pushViewController(memeEditorController, animated: true)
+        }
     }
 }

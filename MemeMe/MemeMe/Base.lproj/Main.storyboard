@@ -66,7 +66,6 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
-                    <navigationItem key="navigationItem" id="rZg-KV-ZK2"/>
                     <connections>
                         <outlet property="bottomTextField" destination="YbB-XV-9o6" id="5VL-WC-t8K"/>
                         <outlet property="cameraButton" destination="aiu-da-HBb" id="O5z-61-nUP"/>
@@ -78,6 +77,21 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-397" y="163"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="0jO-Cw-sBg">
+            <objects>
+                <viewController storyboardIdentifier="TestViewController" id="rOv-A6-zP4" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Bo2-mu-zbu">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="uVd-PH-uL7"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dIw-6X-TYS" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="617" y="-43"/>
         </scene>
         <!--MemeHistoryController-->
         <scene sceneID="SJr-f0-L4b">
@@ -158,7 +172,7 @@
         <scene sceneID="Fp6-yD-Cf3">
             <objects>
                 <navigationController id="WPO-X1-uKO" userLabel="MemeHistoryTableNavItem" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="5n2-YV-rTR"/>
+                    <tabBarItem key="tabBarItem" title="" image="list.dash" catalog="system" id="5n2-YV-rTR"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="9Dz-yY-AcY">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -175,7 +189,7 @@
         <scene sceneID="Nny-QL-Rgv">
             <objects>
                 <navigationController id="qMJ-Wm-LMd" userLabel="MemeHistoryCollectionNavItem" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="4Ly-sA-zGT"/>
+                    <tabBarItem key="tabBarItem" title="" image="square.grid.3x2" catalog="system" id="4Ly-sA-zGT"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="cvo-S6-GW7">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -239,6 +253,8 @@
     </scenes>
     <resources>
         <image name="camera" catalog="system" width="64" height="48"/>
+        <image name="list.dash" catalog="system" width="64" height="42"/>
         <image name="rectangle.stack" catalog="system" width="64" height="60"/>
+        <image name="square.grid.3x2" catalog="system" width="64" height="40"/>
     </resources>
 </document>
