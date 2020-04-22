@@ -18,6 +18,12 @@ class MemeHistoryTableViewController: UITableViewController {
         return appDelegate.memes
     }
 
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        self.tableView.delegate = self
+    }
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 
@@ -46,7 +52,17 @@ class MemeHistoryTableViewController: UITableViewController {
         return cell
     }
 
-    override func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let controller = self.storyboard!.instantiateViewController(withIdentifier: "MemeDetailViewController")
+        guard let memeDetailController = controller as? MemeDetailViewController else {
+            return
+        }
+
+        memeDetailController.meme = self.memes[(indexPath as NSIndexPath).row]
+
+        if let navigationController = navigationController {
+            navigationController.pushViewController(memeDetailController, animated: true)
+        }
     }
 
     @objc func addMeme() {
@@ -54,6 +70,7 @@ class MemeHistoryTableViewController: UITableViewController {
         guard let memeEditorController = controller as? MemeEditorViewController else {
             return
         }
+
         if let navigationController = navigationController {
             navigationController.pushViewController(memeEditorController, animated: true)
         }

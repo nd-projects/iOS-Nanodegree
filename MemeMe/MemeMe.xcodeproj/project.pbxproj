@@ -19,6 +19,7 @@
 		68F24F18244484870090BCAA /* MemeHistoryCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68F24F17244484870090BCAA /* MemeHistoryCollectionViewController.swift */; };
 		68F24F1B24448C5C0090BCAA /* MemeTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68F24F1A24448C5C0090BCAA /* MemeTableCell.swift */; };
 		68F24F1D24448C680090BCAA /* MemeCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68F24F1C24448C680090BCAA /* MemeCollectionCell.swift */; };
+		68F24F1F2450C6230090BCAA /* MemeDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68F24F1E2450C6230090BCAA /* MemeDetailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +37,7 @@
 		68F24F17244484870090BCAA /* MemeHistoryCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemeHistoryCollectionViewController.swift; sourceTree = "<group>"; };
 		68F24F1A24448C5C0090BCAA /* MemeTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemeTableCell.swift; sourceTree = "<group>"; };
 		68F24F1C24448C680090BCAA /* MemeCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemeCollectionCell.swift; sourceTree = "<group>"; };
+		68F24F1E2450C6230090BCAA /* MemeDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemeDetailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,6 +98,7 @@
 				68F24F1224447CDE0090BCAA /* MemeHistoryViewController.swift */,
 				68F24F15244484770090BCAA /* MemeHistoryTableViewController.swift */,
 				68F24F17244484870090BCAA /* MemeHistoryCollectionViewController.swift */,
+				68F24F1E2450C6230090BCAA /* MemeDetailViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -211,6 +214,7 @@
 				68F24F18244484870090BCAA /* MemeHistoryCollectionViewController.swift in Sources */,
 				68F24F16244484770090BCAA /* MemeHistoryTableViewController.swift in Sources */,
 				687F82272427E953006A90A5 /* SceneDelegate.swift in Sources */,
+				68F24F1F2450C6230090BCAA /* MemeDetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -21,7 +21,7 @@ class MemeEditorViewController: UIViewController {
         super.viewWillAppear(animated)
 
         self.tabBarController?.tabBar.isHidden = true
-        
+
         subscribeToKeyboardNotifiactions()
     }
 
@@ -52,12 +52,12 @@ class MemeEditorViewController: UIViewController {
 
     @objc func keyboardWillShow(_ notification: Notification) {
         if bottomTextField.isEditing, view.frame.origin.y == 0 {
-            view.frame.origin.y -= getKeyboardHeight(notification)
+            self.view.frame.origin.y -= getKeyboardHeight(notification)
         }
     }
 
     @objc func keyboardWillHide(_: Notification) {
-        view.frame.origin.y = 0
+        self.view.frame.origin.y = 0
     }
 
     @objc func shareMeme() {
@@ -75,6 +75,7 @@ class MemeEditorViewController: UIViewController {
             }
             // TODO: - Do not save if the user chose "Save Image" as their action
             self.save()
+            self.returnToNavigationRoot()
         }
 
         self.present(activityViewController, animated: true)
@@ -141,7 +142,6 @@ class MemeEditorViewController: UIViewController {
 
     private func generateMemedImage() -> UIImage {
         toolbar.isHidden = true
-        navigationController?.setToolbarHidden(true, animated: false)
 
         UIGraphicsBeginImageContext(view.frame.size)
         view.drawHierarchy(in: view.frame, afterScreenUpdates: true)
@@ -149,7 +149,6 @@ class MemeEditorViewController: UIViewController {
         UIGraphicsEndImageContext()
 
         toolbar.isHidden = false
-        navigationController?.setToolbarHidden(false, animated: false)
 
         return memedImage
     }
@@ -162,8 +161,6 @@ class MemeEditorViewController: UIViewController {
             return
         }
         appDelegate.memes.append(self.meme)
-
-        returnToNavigationRoot()
     }
 }
 
