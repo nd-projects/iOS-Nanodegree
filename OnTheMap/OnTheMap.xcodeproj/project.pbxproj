@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		681E1F562477D8CD00753DA7 /* TabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 681E1F552477D8CD00753DA7 /* TabViewController.swift */; };
+		681E1F582477E05000753DA7 /* AddLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 681E1F572477E05000753DA7 /* AddLocationViewController.swift */; };
+		681E1F5A2477E08900753DA7 /* ConfirmLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 681E1F592477E08900753DA7 /* ConfirmLocationViewController.swift */; };
+		681E1F5C2477FD2C00753DA7 /* AlertUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 681E1F5B2477FD2C00753DA7 /* AlertUtilities.swift */; };
+		681E1F5E247A6AA100753DA7 /* LinkUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 681E1F5D247A6AA100753DA7 /* LinkUtilities.swift */; };
 		68EC67212473D3E70071D47E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68EC67202473D3E60071D47E /* AppDelegate.swift */; };
 		68EC67232473D3E70071D47E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68EC67222473D3E70071D47E /* SceneDelegate.swift */; };
 		68EC67252473D3E70071D47E /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68EC67242473D3E70071D47E /* LoginViewController.swift */; };
@@ -17,11 +22,16 @@
 		68EC673E2476791F0071D47E /* LoginData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68EC673D2476791F0071D47E /* LoginData.swift */; };
 		68EC67402476800F0071D47E /* PinMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68EC673F2476800F0071D47E /* PinMapViewController.swift */; };
 		68EC674224768FCE0071D47E /* SharedData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68EC674124768FCE0071D47E /* SharedData.swift */; };
-		68EC6744247690FB0071D47E /* PinData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68EC6743247690FB0071D47E /* PinData.swift */; };
+		68EC6744247690FB0071D47E /* StudentInformationData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68EC6743247690FB0071D47E /* StudentInformationData.swift */; };
 		68EC6746247696B90071D47E /* PinListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68EC6745247696B90071D47E /* PinListViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		681E1F552477D8CD00753DA7 /* TabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabViewController.swift; sourceTree = "<group>"; };
+		681E1F572477E05000753DA7 /* AddLocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddLocationViewController.swift; sourceTree = "<group>"; };
+		681E1F592477E08900753DA7 /* ConfirmLocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmLocationViewController.swift; sourceTree = "<group>"; };
+		681E1F5B2477FD2C00753DA7 /* AlertUtilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertUtilities.swift; sourceTree = "<group>"; };
+		681E1F5D247A6AA100753DA7 /* LinkUtilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkUtilities.swift; sourceTree = "<group>"; };
 		68EC671D2473D3E60071D47E /* OnTheMap.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OnTheMap.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		68EC67202473D3E60071D47E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		68EC67222473D3E70071D47E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -34,7 +44,7 @@
 		68EC673D2476791F0071D47E /* LoginData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginData.swift; sourceTree = "<group>"; };
 		68EC673F2476800F0071D47E /* PinMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinMapViewController.swift; sourceTree = "<group>"; };
 		68EC674124768FCE0071D47E /* SharedData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedData.swift; sourceTree = "<group>"; };
-		68EC6743247690FB0071D47E /* PinData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinData.swift; sourceTree = "<group>"; };
+		68EC6743247690FB0071D47E /* StudentInformationData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentInformationData.swift; sourceTree = "<group>"; };
 		68EC6745247696B90071D47E /* PinListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinListViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -49,6 +59,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		681E1F5F247A6B5200753DA7 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				681E1F5B2477FD2C00753DA7 /* AlertUtilities.swift */,
+				681E1F5D247A6AA100753DA7 /* LinkUtilities.swift */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
 		68EC67142473D3E60071D47E = {
 			isa = PBXGroup;
 			children = (
@@ -89,11 +108,15 @@
 		68EC67352473D5280071D47E /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				681E1F5F247A6B5200753DA7 /* Utilities */,
 				68EC67202473D3E60071D47E /* AppDelegate.swift */,
 				68EC67222473D3E70071D47E /* SceneDelegate.swift */,
 				68EC67242473D3E70071D47E /* LoginViewController.swift */,
 				68EC673F2476800F0071D47E /* PinMapViewController.swift */,
 				68EC6745247696B90071D47E /* PinListViewController.swift */,
+				681E1F552477D8CD00753DA7 /* TabViewController.swift */,
+				681E1F572477E05000753DA7 /* AddLocationViewController.swift */,
+				681E1F592477E08900753DA7 /* ConfirmLocationViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -104,7 +127,7 @@
 				68EC67372473E7660071D47E /* UdacityDataAPI.swift */,
 				68EC673D2476791F0071D47E /* LoginData.swift */,
 				68EC674124768FCE0071D47E /* SharedData.swift */,
-				68EC6743247690FB0071D47E /* PinData.swift */,
+				68EC6743247690FB0071D47E /* StudentInformationData.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -180,14 +203,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				681E1F5E247A6AA100753DA7 /* LinkUtilities.swift in Sources */,
 				68EC67252473D3E70071D47E /* LoginViewController.swift in Sources */,
-				68EC6744247690FB0071D47E /* PinData.swift in Sources */,
+				681E1F5C2477FD2C00753DA7 /* AlertUtilities.swift in Sources */,
+				68EC6744247690FB0071D47E /* StudentInformationData.swift in Sources */,
 				68EC674224768FCE0071D47E /* SharedData.swift in Sources */,
 				68EC673E2476791F0071D47E /* LoginData.swift in Sources */,
 				68EC67212473D3E70071D47E /* AppDelegate.swift in Sources */,
+				681E1F582477E05000753DA7 /* AddLocationViewController.swift in Sources */,
 				68EC6746247696B90071D47E /* PinListViewController.swift in Sources */,
 				68EC67232473D3E70071D47E /* SceneDelegate.swift in Sources */,
+				681E1F5A2477E08900753DA7 /* ConfirmLocationViewController.swift in Sources */,
 				68EC67402476800F0071D47E /* PinMapViewController.swift in Sources */,
+				681E1F562477D8CD00753DA7 /* TabViewController.swift in Sources */,
 				68EC67382473E7660071D47E /* UdacityDataAPI.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -11,5 +11,6 @@ import Foundation
 class SharedData {
     static let instance = SharedData()
     var currentSession: LoginData?
-    var pins: PinDataCollection?
+    var currentUser: StudentLocation?
+    var pins: StudentInformationData?
 }

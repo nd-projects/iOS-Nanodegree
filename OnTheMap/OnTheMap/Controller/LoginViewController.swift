@@ -12,58 +12,48 @@ class LoginViewController: UIViewController {
 
     @IBOutlet weak var emailField: UITextField!
     @IBOutlet weak var passwordField: UITextField!
-    @IBOutlet weak var loginButton: UIButton!
     @IBOutlet weak var errorLabel: UILabel!
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+
         // Clear the email and password?
     }
 
-    // func: Handle the response to the login request
-    // If error, display in label and reset button stext/state
-    // If success, transition to map view along with session info
-
     @IBAction func login(_ sender: Any) {
 
-        UdacityDataAPI.requestLogin(username: self.emailField.text!, password: self.passwordField.text!, completionHandler: handleLoginAttempt(loginData:error:))
+        UdacityDataAPI.requestLogin(username: self.emailField.text!, password: self.passwordField.text!, completionHandler: handleLoginAttempt(data:error:))
     }
 
-    func handleLoginAttempt(loginData: LoginData?, error: Error?) {
+    @IBAction func signup(_ sender: Any) {
+        LinkUtilities.OpenLink("https://www.google.com/url?q=https://www.udacity.com/account/auth%23!/signup&sa=D&ust=1589881348258000")
+    }
 
-        if let error = error {
+    func handleLoginAttempt(data: Data?, error: Error?) {
+
+        if error != nil {
             DispatchQueue.main.async {
-                self.errorLabel.text = error.localizedDescription
+                self.errorLabel.text = "Network connection error"
             }
             return
         }
 
-        if let loginData = loginData {
+        do {
+            let loginData = try JSONDecoder().decode(LoginData.self, from: data!)
             DispatchQueue.main.async {
-                print("Login authenticated")
                 self.segueToPins(loginData: loginData)
             }
         }
-        else
-        {
+        catch _ {
             DispatchQueue.main.async {
-                self.errorLabel.text = "No login data"
+                self.errorLabel.text = "Invalid Username/Password"
             }
         }
     }
 
     private func segueToPins(loginData: LoginData) {
-
-        let controller = self.storyboard?.instantiateViewController(withIdentifier: "PinController")
-        guard let pinsViewController = controller else {
-            return
-        }
-
         SharedData.instance.currentSession = loginData
-        if let navigationController = navigationController {
-            navigationController.pushViewController(pinsViewController, animated: true)
-        }
+        self.performSegue(withIdentifier: "loginSuccessful", sender: nil)
     }
 }
 
