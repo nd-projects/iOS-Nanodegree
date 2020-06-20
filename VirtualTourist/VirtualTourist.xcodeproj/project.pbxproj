@@ -15,6 +15,7 @@
 		68B8F146249BE3B6007A62EB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 68B8F145249BE3B6007A62EB /* Assets.xcassets */; };
 		68B8F149249BE3B6007A62EB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 68B8F147249BE3B6007A62EB /* LaunchScreen.storyboard */; };
 		68B8F156249BEAB6007A62EB /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68B8F155249BEAB6007A62EB /* Constants.swift */; };
+		68B8F158249E1BF7007A62EB /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68B8F157249E1BF7007A62EB /* DataController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		68B8F148249BE3B6007A62EB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		68B8F14A249BE3B6007A62EB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		68B8F155249BEAB6007A62EB /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		68B8F157249E1BF7007A62EB /* DataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,6 +79,7 @@
 			children = (
 				68B8F142249BE3B6007A62EB /* VirtualTourist.xcdatamodeld */,
 				68B8F155249BEAB6007A62EB /* Constants.swift */,
+				68B8F157249E1BF7007A62EB /* DataController.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -185,6 +188,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				68B8F144249BE3B6007A62EB /* VirtualTourist.xcdatamodeld in Sources */,
+				68B8F158249E1BF7007A62EB /* DataController.swift in Sources */,
 				68B8F156249BEAB6007A62EB /* Constants.swift in Sources */,
 				68B8F13E249BE3B6007A62EB /* TravelLocationsViewController.swift in Sources */,
 				68B8F13A249BE3B6007A62EB /* AppDelegate.swift in Sources */,
