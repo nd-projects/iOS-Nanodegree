@@ -130,6 +130,7 @@
                         <viewLayoutGuide key="safeArea" id="3jl-yL-2yJ"/>
                     </view>
                     <connections>
+                        <outlet property="flowLayout" destination="GCq-z3-KWP" id="TM9-cT-xjF"/>
                         <outlet property="locationNameLabel" destination="acj-0p-FHl" id="boI-64-Gp1"/>
                         <outlet property="mapView" destination="sbv-hf-VTB" id="NXF-5t-yfd"/>
                         <outlet property="noPhotosLabel" destination="XMT-Vk-0kY" id="ko8-y4-6lN"/>

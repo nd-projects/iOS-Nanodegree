@@ -50,6 +50,7 @@ class TravelLocationsViewController: UIViewController, NSFetchedResultsControlle
     fileprivate func reloadPins() {
         for pin in self.fetchedResultsController.fetchedObjects! {
             addAnnotation(CLLocationCoordinate2D(latitude: pin.latitude, longitude: pin.longitude))
+            FlickrRequest.requestPhotosForLocation(pin: pin, page: 1, completionHandler: handlePhotoSearch(photos:error:))
         }
     }
 
@@ -75,7 +76,6 @@ class TravelLocationsViewController: UIViewController, NSFetchedResultsControlle
             reloadMapPosition()
             reloadPins()
         }
-
     }
 
     fileprivate func addAnnotation(_ coordinates: CLLocationCoordinate2D) {
@@ -103,6 +103,18 @@ class TravelLocationsViewController: UIViewController, NSFetchedResultsControlle
             photoAlbumVC.pin = self.selectedPin
         }
     }
+
+    func handlePhotoSearch(photos: FlickrPhotoSearch?, error: Error?) {
+        if let error = error {
+            print("ERROR: \(error.localizedDescription.description)")
+        }
+
+        guard let photos = photos else {
+            return
+        }
+
+        print(photos.photos.pages)
+   }
 
 }
 
