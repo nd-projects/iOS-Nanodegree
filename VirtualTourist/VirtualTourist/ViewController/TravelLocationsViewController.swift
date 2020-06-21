@@ -20,6 +20,8 @@ class TravelLocationsViewController: UIViewController, NSFetchedResultsControlle
 
     var uiLongGesture: UILongPressGestureRecognizer!
 
+    var selectedPin: Pin?
+
     fileprivate func reloadMapPosition() {
         let lastCoord = CLLocation(latitude: UserDefaults.standard.double(forKey: UserDefaultsAccess.latitude.rawValue), longitude: UserDefaults.standard.double(forKey: UserDefaultsAccess.longitude.rawValue))
 
@@ -87,13 +89,21 @@ class TravelLocationsViewController: UIViewController, NSFetchedResultsControlle
         let coordinates = mapView.convert(touchPoint, toCoordinateFrom: mapView)
         addAnnotation(coordinates)
 
-        let pin = Pin(context: dataController.viewContext)
+        let pin = Pin(context: self.dataController.viewContext)
         pin.latitude = coordinates.latitude
         pin.longitude = coordinates.longitude
         pin.creationDate = Date()
         try? self.dataController.viewContext.save()
-        setupFetchedResultsController()
     }
+
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "showPhotoAlbum" {
+            let photoAlbumVC = segue.destination as! PhotoAlbumViewController
+            photoAlbumVC.dataController = self.dataController
+            photoAlbumVC.pin = self.selectedPin
+        }
+    }
+
 }
 
 extension TravelLocationsViewController: MKMapViewDelegate {
@@ -109,5 +119,26 @@ extension TravelLocationsViewController: MKMapViewDelegate {
         UserDefaults.standard.set(Double(mapSpan.longitudeDelta), forKey: UserDefaultsAccess.zoomLongitude.rawValue)
 
         UserDefaults.standard.synchronize()
+    }
+
+    func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
+        selectedPin = findPin(view.annotation?.coordinate ?? nil)
+        mapView.deselectAnnotation(view.annotation, animated: true)
+        performSegue(withIdentifier: "showPhotoAlbum", sender: self)
+    }
+
+    func findPin(_ coordinates: CLLocationCoordinate2D?) -> Pin? {
+        guard let coordinates = coordinates else {
+            return nil
+        }
+
+        if let pins = fetchedResultsController.fetchedObjects {
+            for pin in pins {
+                if pin.latitude == coordinates.latitude && pin.longitude == coordinates.longitude {
+                    return pin
+                }
+            }
+        }
+        return nil
     }
 }

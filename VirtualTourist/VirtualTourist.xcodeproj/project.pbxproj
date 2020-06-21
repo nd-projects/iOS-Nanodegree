@@ -16,6 +16,8 @@
 		68B8F149249BE3B6007A62EB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 68B8F147249BE3B6007A62EB /* LaunchScreen.storyboard */; };
 		68B8F156249BEAB6007A62EB /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68B8F155249BEAB6007A62EB /* Constants.swift */; };
 		68B8F158249E1BF7007A62EB /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68B8F157249E1BF7007A62EB /* DataController.swift */; };
+		68B8F15A249F7033007A62EB /* PhotoAlbumViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68B8F159249F7033007A62EB /* PhotoAlbumViewController.swift */; };
+		68B8F15C249F8F15007A62EB /* PhotoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68B8F15B249F8F15007A62EB /* PhotoCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +32,8 @@
 		68B8F14A249BE3B6007A62EB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		68B8F155249BEAB6007A62EB /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		68B8F157249E1BF7007A62EB /* DataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
+		68B8F159249F7033007A62EB /* PhotoAlbumViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoAlbumViewController.swift; sourceTree = "<group>"; };
+		68B8F15B249F8F15007A62EB /* PhotoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,6 +91,7 @@
 		68B8F151249BE51D007A62EB /* View */ = {
 			isa = PBXGroup;
 			children = (
+				68B8F15B249F8F15007A62EB /* PhotoCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -95,6 +100,7 @@
 			isa = PBXGroup;
 			children = (
 				68B8F13D249BE3B6007A62EB /* TravelLocationsViewController.swift */,
+				68B8F159249F7033007A62EB /* PhotoAlbumViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -188,8 +194,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				68B8F144249BE3B6007A62EB /* VirtualTourist.xcdatamodeld in Sources */,
+				68B8F15A249F7033007A62EB /* PhotoAlbumViewController.swift in Sources */,
 				68B8F158249E1BF7007A62EB /* DataController.swift in Sources */,
 				68B8F156249BEAB6007A62EB /* Constants.swift in Sources */,
+				68B8F15C249F8F15007A62EB /* PhotoCell.swift in Sources */,
 				68B8F13E249BE3B6007A62EB /* TravelLocationsViewController.swift in Sources */,
 				68B8F13A249BE3B6007A62EB /* AppDelegate.swift in Sources */,
 				68B8F13C249BE3B6007A62EB /* SceneDelegate.swift in Sources */,
