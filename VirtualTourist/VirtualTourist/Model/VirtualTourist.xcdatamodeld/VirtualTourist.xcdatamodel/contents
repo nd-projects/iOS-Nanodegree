@@ -2,16 +2,16 @@
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="15702" systemVersion="18G4032" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="Photo" representedClassName="Photo" syncable="YES" codeGenerationType="class">
         <attribute name="photo" optional="YES" attributeType="Binary" allowsExternalBinaryDataStorage="YES"/>
-        <relationship name="album" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Pin" inverseName="album" inverseEntity="Pin"/>
+        <relationship name="pin" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Pin" inverseName="album" inverseEntity="Pin"/>
     </entity>
     <entity name="Pin" representedClassName="Pin" syncable="YES" codeGenerationType="class">
         <attribute name="creationDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="latitude" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
         <attribute name="longitude" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
-        <relationship name="album" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Photo" inverseName="album" inverseEntity="Photo"/>
+        <relationship name="album" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Photo" inverseName="pin" inverseEntity="Photo"/>
     </entity>
     <elements>
-        <element name="Pin" positionX="-40.03515625" positionY="11.6953125" width="128" height="103"/>
         <element name="Photo" positionX="-26.4609375" positionY="145.9453125" width="128" height="73"/>
+        <element name="Pin" positionX="-40.03515625" positionY="11.6953125" width="128" height="103"/>
     </elements>
 </model>
