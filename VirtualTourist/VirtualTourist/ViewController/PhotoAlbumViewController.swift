@@ -18,6 +18,7 @@ class PhotoAlbumViewController: UIViewController, NSFetchedResultsControllerDele
     @IBOutlet weak var locationNameLabel: UILabel!
     @IBOutlet weak var noPhotosLabel: UILabel!
     @IBOutlet weak var flowLayout: UICollectionViewFlowLayout!
+    @IBOutlet weak var newCollectionButton: UIButton!
 
     var dataController: DataController!
 
@@ -53,16 +54,6 @@ class PhotoAlbumViewController: UIViewController, NSFetchedResultsControllerDele
         }
     }
 
-    fileprivate func setupCollectionFlow() {
-        let space: CGFloat = 3.0
-        let width = (self.view.frame.size.width - (2 * space)) / 3.0
-        let height = (self.view.frame.size.height - (2 * space)) / 3.0
-
-        flowLayout.minimumInteritemSpacing = space
-        flowLayout.minimumLineSpacing = space
-        flowLayout.itemSize = CGSize(width: width, height: height)
-    }
-
     fileprivate func setupMap() {
         let centerLocation = CLLocationCoordinate2D(latitude: pin.latitude, longitude: pin.longitude)
         mapView.setCenter(centerLocation, animated: true)
@@ -78,9 +69,9 @@ class PhotoAlbumViewController: UIViewController, NSFetchedResultsControllerDele
         mapView.setRegion(MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: pin.latitude, longitude: pin.longitude), latitudinalMeters: 1500, longitudinalMeters: 1500), animated: true)
     }
 
-    fileprivate func populatePhotoCollection() {
+    fileprivate func populatePhotoCollection(page: Int) {
         if !photoAlbumDetails.hasStoredPhotos {
-            FlickrRequest.requestPhotosForLocation(pin: pin, page: photoAlbumDetails.currentPage, completionHandler: handlePhotoSearch(photos:error:))
+            FlickrRequest.requestPhotosForLocation(pin: pin, page: page, completionHandler: handlePhotoSearch(photos:error:))
         }
     }
 
@@ -94,7 +85,7 @@ class PhotoAlbumViewController: UIViewController, NSFetchedResultsControllerDele
                 self.locationNameLabel.text = "Unknown Location"
             }
 
-            if let placemarks = placemarks, placemarks.count != 0, let name = placemarks[0].name, let locality = placemarks[0].locality {
+            if let placemarks = placemarks, placemarks.count != 0, let name = placemarks[0].name, let 	locality = placemarks[0].locality {
                 self.locationNameLabel.text = "\(name), \(locality)"
             } else {
                 self.locationNameLabel.text = "Unknown Location"
@@ -105,15 +96,30 @@ class PhotoAlbumViewController: UIViewController, NSFetchedResultsControllerDele
         self.photoCollection.dataSource = self
 
         setupFetchedResultsController()
-        setupCollectionFlow()
         setupMap()
 
-        populatePhotoCollection()
+        populatePhotoCollection(page: photoAlbumDetails.currentPage)
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.photoCollection.reloadData()
+    }
+
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        fetchedResultsController = nil
+    }
+
+    @IBAction func loadNewPhotoCollection(_ sender: Any) {
+        if let fetchedPhotos = fetchedResultsController.fetchedObjects {
+            for photo in fetchedPhotos {
+                dataController.viewContext.delete(photo)
+            }
+            try? dataController.viewContext.save()
+        }
+        photoAlbumDetails.hasStoredPhotos = false
+        populatePhotoCollection(page: Int.random(in: 1 ... photoAlbumDetails.totalPages))
     }
 
     func handlePhotoSearch(photos: FlickrPhotoSearch?, error: Error?) {
@@ -130,8 +136,10 @@ class PhotoAlbumViewController: UIViewController, NSFetchedResultsControllerDele
         } else {
             noPhotosLabel.isHidden = true
             self.photoAlbumDetails.currentPage = photos.photos.page
+            self.photoAlbumDetails.totalPages = photos.photos.pages
             self.photoAlbumDetails.photoDownloadData = photos.photos.photo
         }
+        self.photoCollection.reloadData()
     }
 }
 
@@ -163,15 +171,13 @@ extension PhotoAlbumViewController: UICollectionViewDataSource {
                 guard let data = data else {
                     return
                 }
-                DispatchQueue.main.async {
-                    let image = UIImage(data: data)
-                    cell.imageView.image = image
+                let image = UIImage(data: data)
+                cell.imageView.image = image
 
-                    let photo = Photo(context: self.dataController.viewContext)
-                    photo.photo = data
-                    photo.pin = self.pin
-                    try? self.dataController.viewContext.save()
-                }
+                let photo = Photo(context: self.dataController.viewContext)
+                photo.photo = data
+                photo.pin = self.pin
+                try? self.dataController.viewContext.save()
             }
         }
         return cell
@@ -183,5 +189,42 @@ extension PhotoAlbumViewController: UICollectionViewDataSource {
 }
 
 extension PhotoAlbumViewController: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let photoToDelete = fetchedResultsController.object(at: indexPath as IndexPath)
+        dataController.viewContext.delete(photoToDelete)
+        try? dataController.viewContext.save()
 
+        photoCollection.deleteItems(at: [indexPath])
+        collectionView.reloadData()
+    }
+}
+
+extension PhotoAlbumViewController: UICollectionViewDelegateFlowLayout {
+
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let space: CGFloat = 3.0
+        let width = (collectionView.bounds.width - (2 * space)) / 3.0
+        let height = (collectionView.bounds.height - (2 * space)) / 3.0
+        return CGSize(width: width, height: height)
+    }
+
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        insetForSectionAt section: Int) -> UIEdgeInsets {
+        return UIEdgeInsets(top: 3.0, left: 3.0, bottom: 3.0, right: 3.0)
+    }
+
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        return 0.0
+    }
+
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 0.0
+    }
 }

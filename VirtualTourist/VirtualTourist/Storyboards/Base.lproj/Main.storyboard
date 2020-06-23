@@ -100,6 +100,9 @@
                                 <state key="normal" title="New Collection" image="photo.on.rectangle" catalog="system">
                                     <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
+                                <connections>
+                                    <action selector="loadNewPhotoCollection:" destination="Qxr-9P-nr7" eventType="touchUpInside" id="qic-UE-pTC"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No photos found at this location" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XMT-Vk-0kY" userLabel="No Photos Label">
                                 <rect key="frame" x="16" y="460" width="343" height="21"/>
@@ -132,6 +135,7 @@
                         <outlet property="flowLayout" destination="GCq-z3-KWP" id="TM9-cT-xjF"/>
                         <outlet property="locationNameLabel" destination="acj-0p-FHl" id="boI-64-Gp1"/>
                         <outlet property="mapView" destination="sbv-hf-VTB" id="NXF-5t-yfd"/>
+                        <outlet property="newCollectionButton" destination="saH-ya-tX5" id="ZnN-Bu-0hA"/>
                         <outlet property="noPhotosLabel" destination="XMT-Vk-0kY" id="ko8-y4-6lN"/>
                         <outlet property="photoCollection" destination="lB0-Cj-Fjm" id="5tN-oj-Dfc"/>
                     </connections>

@@ -2,7 +2,7 @@
 //  ViewController.swift
 //  VirtualTourist
 //
-//  Created by Dunning Nicholas, EV-44 on 18.06.20.
+//  Created by Dunning Nicholas on 18.06.20.
 //  Copyright © 2020 nd-projects. All rights reserved.
 //
 
@@ -21,6 +21,8 @@ class TravelLocationsViewController: UIViewController, NSFetchedResultsControlle
     var uiLongGesture: UILongPressGestureRecognizer!
 
     var selectedPin: Pin?
+
+    // MARK:- Setup Helpers
 
     fileprivate func reloadMapPosition() {
         let lastCoord = CLLocation(latitude: UserDefaults.standard.double(forKey: UserDefaultsAccess.latitude.rawValue), longitude: UserDefaults.standard.double(forKey: UserDefaultsAccess.longitude.rawValue))
@@ -53,6 +55,8 @@ class TravelLocationsViewController: UIViewController, NSFetchedResultsControlle
         }
     }
 
+    // MARK:- Overriden
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -65,10 +69,12 @@ class TravelLocationsViewController: UIViewController, NSFetchedResultsControlle
         if(!UserDefaults.standard.bool(forKey: "hasLaunchedBefore")) {
             UserDefaults.standard.set(true, forKey: "hasLaunchedBefore")
 
-            UserDefaults.standard.set(Double(0), forKey: UserDefaultsAccess.latitude.rawValue)
-            UserDefaults.standard.set(Double(0), forKey: UserDefaultsAccess.longitude.rawValue)
-            UserDefaults.standard.set(Double(50000), forKey: UserDefaultsAccess.zoomLatitude.rawValue)
-            UserDefaults.standard.set(Double(60000), forKey: UserDefaultsAccess.zoomLongitude.rawValue)
+            let mapCenter = self.mapView.region.center
+            let mapSpan = self.mapView.region.span
+            UserDefaults.standard.set(mapCenter.latitude, forKey: UserDefaultsAccess.latitude.rawValue)
+            UserDefaults.standard.set(mapCenter.longitude, forKey: UserDefaultsAccess.longitude.rawValue)
+            UserDefaults.standard.set(mapSpan.latitudeDelta, forKey: UserDefaultsAccess.zoomLatitude.rawValue)
+            UserDefaults.standard.set(mapSpan.longitudeDelta, forKey: UserDefaultsAccess.zoomLongitude.rawValue)
             UserDefaults.standard.synchronize()
         }
         else {
@@ -76,6 +82,13 @@ class TravelLocationsViewController: UIViewController, NSFetchedResultsControlle
             reloadPins()
         }
     }
+
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        fetchedResultsController = nil
+    }
+
+    // MARK:- Map interaction
 
     fileprivate func addAnnotation(_ coordinates: CLLocationCoordinate2D) {
         let annotation = MKPointAnnotation()
@@ -96,6 +109,8 @@ class TravelLocationsViewController: UIViewController, NSFetchedResultsControlle
         setupFetchedResultsController()
     }
 
+    // MARK:- Segues
+
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showPhotoAlbum" {
             let photoAlbumVC = segue.destination as! PhotoAlbumViewController
@@ -106,17 +121,18 @@ class TravelLocationsViewController: UIViewController, NSFetchedResultsControlle
 
 }
 
+// MARK:- MKMapViewDelegate
 extension TravelLocationsViewController: MKMapViewDelegate {
 
     func mapViewDidChangeVisibleRegion(_ mapView: MKMapView) {
         let mapCenterCoord = mapView.region.center
         let mapSpan = mapView.region.span
 
-        UserDefaults.standard.set(Double(mapCenterCoord.latitude), forKey: UserDefaultsAccess.latitude.rawValue)
-        UserDefaults.standard.set(Double(mapCenterCoord.longitude), forKey: UserDefaultsAccess.longitude.rawValue)
+        UserDefaults.standard.set(mapCenterCoord.latitude, forKey: UserDefaultsAccess.latitude.rawValue)
+        UserDefaults.standard.set(mapCenterCoord.longitude, forKey: UserDefaultsAccess.longitude.rawValue)
 
-        UserDefaults.standard.set(Double(mapSpan.latitudeDelta), forKey: UserDefaultsAccess.zoomLatitude.rawValue)
-        UserDefaults.standard.set(Double(mapSpan.longitudeDelta), forKey: UserDefaultsAccess.zoomLongitude.rawValue)
+        UserDefaults.standard.set(mapSpan.latitudeDelta, forKey: UserDefaultsAccess.zoomLatitude.rawValue)
+        UserDefaults.standard.set(mapSpan.longitudeDelta, forKey: UserDefaultsAccess.zoomLongitude.rawValue)
 
         UserDefaults.standard.synchronize()
     }

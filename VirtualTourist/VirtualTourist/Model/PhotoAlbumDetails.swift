@@ -12,5 +12,6 @@ struct PhotoAlbumDetails {
     var hasStoredPhotos: Bool = false
     var numberOfPhotosToDownload: Int { return photoDownloadData.count }
     var currentPage: Int = 1
+    var totalPages: Int = 1
     var photoDownloadData: [FlickrPhoto] = [FlickrPhoto]()
 }
